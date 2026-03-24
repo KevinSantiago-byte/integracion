@@ -1,0 +1,19 @@
+services:
+
+  app:
+    build: .
+    container_name: integracion-v2
+    ports:
+      - "8082:8082"
+    networks:
+      - safcoperu-network
+    restart: always
+    volumes:
+      - maven-repo:/root/.m2/repository
+
+volumes:
+  maven-repo:
+
+networks:
+  safcoperu-network:
+    external: true
