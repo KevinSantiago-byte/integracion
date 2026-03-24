@@ -2,3 +2,4 @@
 .idea/*
 *-commit.md
 integracion/.env
+.vscode/*
