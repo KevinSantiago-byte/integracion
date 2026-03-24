@@ -1,2 +1,3 @@
+.idea/.gitignore
 .idea/*
-git-commit.md
+*-commit.md
