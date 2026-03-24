@@ -87,9 +87,6 @@ public class SyncFriomamutService implements SyncFriomamutUseCase {
         );
     }
 
-
-
-
     /****************************************************************************************
                             * MÉTODOS PARA SYNC  DE PALLETS DE FRIOMAMUT
      ***************************************************************************************/
