@@ -11,18 +11,33 @@ import java.time.LocalDate;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class SyncMeasurementScheduler {
+public class SyncFriomamutScheduler {
     private final SyncFriomamutUseCase syncFriomamutUseCase;
 
     @Scheduled(cron = "0 0 9 * * *")
-    public void syncLastTwoDays() {
+    public void syncMeasurementLastTwoDays() {
         LocalDate ayer = LocalDate.now().minusDays(1);
         LocalDate anteayer = ayer.minusDays(1);
         syncFriomamutUseCase
                 .syncMeasurementsByDateRange(anteayer, ayer)
-                .doOnComplete(() -> log.info("Sync automático completado"))
+                .doOnComplete(() -> log.info("Sync de medidas automático completado"))
                 .doOnError(e -> log.error("Error en sync automático", e))
                 .subscribe();
     }
+
+    @Scheduled(cron = "0 0 9 * * *")
+    public void synPalletsLastTwoDays(){
+        LocalDate ayer = LocalDate.now().minusDays(1);
+        LocalDate anteayer = ayer.minusDays(1);
+        syncFriomamutUseCase
+                .syncPalletsByDateRange(anteayer, ayer)
+                .doOnComplete(() -> log.info("Sync de pallets automático completado"))
+                .doOnError(e -> log.error("Error en sync automático", e))
+                .subscribe();
+    }
+
+
+
+
 
 }
